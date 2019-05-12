@@ -30,6 +30,7 @@ export class TCTableComponent implements OnInit, OnChanges {
 	@Input() config: ITableConfig;
 	@Input() rows: Array<any>;
 	@Input() itemsPerPage: number;
+	@Input() isActiveFilter: boolean;
 
 	data: Array<any>;
 	filtering: any;
@@ -37,6 +38,10 @@ export class TCTableComponent implements OnInit, OnChanges {
 	pagesCount: number;
 	page: number;
 	columnList: TCTableColComponent[];
+	tableData: any;
+	activeUsers: any;
+  inactiveUsers: any;
+  allactiveUsers: any;
 
 	constructor() {
 		this.borderStyle = 'solid';
@@ -56,11 +61,26 @@ export class TCTableComponent implements OnInit, OnChanges {
 		};
 		this.itemsPerPage = 10;
 		this.page = 1;
+		this.activeUsers = (input) => {
+      const is = field => item => ( item[field] === 'active' );
+      return input.filter(is('status'));
+    }
+    this.inactiveUsers = (input) => {
+			console.log(input);
+      const is = field => item => ( item[field] === 'inactive' );
+      return input.filter(is('status'));
+    }
+    this.allactiveUsers = (input) => {
+      const is = field => item => ( (item[field] === 'inactive'
+      || item[field] === 'active') );
+      return input.filter(is('status'));
+    }
 	}
 
   ngOnInit() {
 	  this.getColumns();
-    this.data = this.rows;
+		this.data = this.rows;
+		this.rows = this.activeUsers(this.data);
     this.pagesCount = Math.ceil(this.rows.length / this.itemsPerPage);
 
     if (this.data.length > 0) {
@@ -191,4 +211,24 @@ export class TCTableComponent implements OnInit, OnChanges {
 
 		this.rows = this.pagination ? this.changePage(this.page, this.itemsPerPage, sortedData) : sortedData;
 	}
+	filterTbl(str) {
+    // let temp: any;
+    // temp = this.tableData;
+    // this.tableData = this.tableData.filter((data) => {
+    //   return data.status === str;
+    // });
+    if(str === 'active') {
+			this.rows = this.activeUsers(this.data);
+			console.log(this.data);
+      // console.log(JSON.stringify(this.activeUsers(this.rows)));
+    } else if(str === 'inactive') {
+			this.rows = this.inactiveUsers(this.data);
+			console.log(this.data);
+      // console.log(JSON.stringify(this.inactiveUsers(this.rows)));
+    } else {
+			this.rows = this.allactiveUsers(this.data);
+			console.log(this.data);
+      // console.log(JSON.stringify(this.allactiveUsers(this.rows)));
+    }
+  }
 }

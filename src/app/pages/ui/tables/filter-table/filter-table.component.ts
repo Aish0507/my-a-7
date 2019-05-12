@@ -45,6 +45,7 @@ export class PageFilterTableComponent extends BasePageComponent implements OnIni
       return input.filter(is('status'));
     }
     this.inactiveUsers = (input) => {
+      console.log(input);
       const is = field => item => ( item[field] === 'inactive' );
       return input.filter(is('status'));
     }

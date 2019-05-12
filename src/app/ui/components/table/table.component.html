@@ -1,3 +1,10 @@
+<tc-form-group *ngIf="isActiveFilter">
+	<div class="buttons-list float-right mb-2">
+    <button tc-button (click)="filterTbl('active')">Active</button>
+    <button tc-button (click)="filterTbl('inactive')">inActive</button>
+    <button tc-button (click)="filterTbl('all')">All</button>
+  </div>
+</tc-form-group>
 <tc-form-group *ngIf="search">
 	<tc-input
 		[placeholder]="'Seach in table'"
