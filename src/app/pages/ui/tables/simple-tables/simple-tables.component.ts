@@ -48,4 +48,10 @@ export class PageSimpleTablesComponent extends BasePageComponent implements OnIn
   ngOnDestroy() {
     super.ngOnDestroy();
   }
+  convertStrToObj(str: any) {
+    return JSON.parse(str);
+  }
+  getObjKeyName(obj: object) {
+    return obj === null || undefined ? null : Object.keys(obj);
+  }
 }

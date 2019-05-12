@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { throwError as observableThrowError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { throwError as observableThrowError, of } from 'rxjs';
+import { catchError, tap, filter, map, scan } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,15 @@ export class HttpService {
     );
   }
   postData(source: string, data: any, isFormData?: any) {
+    of(5,6,7).pipe(
+      tap(el => console.log(`1st tap ${el}`)),
+      filter(n => n % 2 === 0),
+      tap(el => console.log(`2st tap ${el}`)),
+      map(n => n + 10),
+      tap(el => console.log(`3st tap ${el}`)),
+      scan((sum, n) => sum + n),
+      tap(el => console.log(`4st tap ${el}`))
+    ).subscribe(result => console.log("Result: "+  result));
     let headers = new HttpHeaders();
     headers = this.apiHeaders(headers, isFormData);
     return this.http.post(source, data, { headers: headers }).pipe(

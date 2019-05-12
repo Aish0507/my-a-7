@@ -3,24 +3,40 @@
     "number": 1,
 		"person": "Ronald Hilbert",
 		"position": "developer",
-		"email": "robhilbert@company.com"
+		"email": "robhilbert@company.com",
+		"data": "{\"createdDate\":\"1234\",\"name\":\"Aishvarya\",\"type\":\"qpi\"}",
+		"test" : {
+			"name": "AIshaary"
+		}
 	},
 	{
     "number": 2,
 		"person": "Angela Simpson",
 		"position": "digital artist",
-		"email": "hilbert@company.com"
+		"email": "hilbert@company.com",
+		"data": "{\"createdDate\":\"1234\",\"name\":\"Aishvarya\",\"type\":\"qpi\"}",
+		"test" : {
+			"name": "AIshaary"
+		}
 	},
 	{
     "number": 3,
 		"person": "Richard Franson",
 		"position": "art director",
-		"email": "richard@company.com"
+		"email": "richard@company.com",
+		"data": "{\"createdDate\":\"1234\",\"name\":\"Aishvarya\",\"type\":\"qpi\"}",
+		"test" : {
+			"name": "AIshaary"
+		}
 	},
 	{
     "number": 4,
 		"person": "David Robertson",
 		"position": "developer",
-		"email": "david@company.com"
+		"email": "david@company.com",
+		"data": "{\"createdDate\":\"1234\",\"name\":\"Aishvarya\",\"type\":\"qpi\"}",
+		"test" : {
+			"name": "AIshaary"
+		}
 	}
 ]

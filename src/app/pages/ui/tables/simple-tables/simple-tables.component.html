@@ -1,6 +1,11 @@
 <tc-card [title]="'Default'">
+  {{getObjKeyName(convertStrToObj(tableData[0]?.data.toString()))}}
 	<tc-table [rows]="tableData">
-		<tc-table-col [columnTitle]="'#'" [columnName]="'number'"></tc-table-col>
+		<tc-table-col [columnTitle]="'#'" [columnName]="'test'">
+        <ng-template #tableTDTemplate  let-row="row">
+            <span [tcColor]="'#a5a5a5'">{{ convertStrToObj(row.data.toString()).name }}</span>
+          </ng-template>
+    </tc-table-col>
 		<tc-table-col [columnTitle]="'Person'" [columnName]="'person'"></tc-table-col>
 		<tc-table-col [columnTitle]="'Position'" [columnName]="'position'"></tc-table-col>
 		<tc-table-col [columnTitle]="'E-mail'" [columnName]="'email'"></tc-table-col>

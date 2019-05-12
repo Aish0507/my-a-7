@@ -1,4 +1,8 @@
 <tc-card class="mb-0">
+  {{tableData | json}}
+  <button class="btn btn-primary" (click)="filterTbl('active')">Active</button>
+  <button class="btn btn-primary" (click)="filterTbl('inactive')">inActive</button>
+  <button class="btn btn-primary" (click)="filterTbl('all')">All</button>
   <tc-table [rows]="tableData" [hovered]="true">
     <tc-table-col [columnTitle]="'Name'" [columnName]="'name'" [enableFiltering]="true">
       <ng-template #tableTDTemplate let-value>
